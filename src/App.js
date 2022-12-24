@@ -1,37 +1,35 @@
 import React from 'react';
 import './App.css'
+import cat from "./media/icons/cat.svg"
+import Animal from "./components/Animal";
+import AnimalList from "./components/AnimalList";
 
 class App extends React.Component {
+
   state = {
-    x: 0,
-    y: 0,
-  };
-
-  componentDidMount() {
-    window.addEventListener('mousemove', this.handleMouseMove);
+    isManyAnimals: false
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('mousemove', this.handleMouseMove);
+  onChangeAnimals = () => {
+    this.setState({isManyAnimals : !this.state.isManyAnimals})
   }
 
-  handleMouseMove = (event) => {
-    this.setState({
-      x: event.clientX,
-      y: event.clientY,
-    });
-  };
+  randomDelay = () => {
+    return Math.random().toFixed(2) * 4 +0.5
+  }
 
   render() {
-    const { y, x } = this.state;
-
     return (
-        <div className="square"
-            style={{
-              top: y,
-              left: x,
-            }}
-        />
+        <>
+          <button className='change-button' onClick={this.onChangeAnimals}>
+            {this.state.isManyAnimals ? "Animals": 'Cat'}
+          </button>
+            {!this.state.isManyAnimals ?
+                <Animal backgroundImage={cat} delay={1}
+                        x={0}
+                        y={0}/>:
+                <AnimalList onDelay={this.randomDelay}/>}
+        </>
     );
   }
 }
