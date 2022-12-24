@@ -1,3 +1,7 @@
+// This is file with imports of icons because simple url('urlpath') doesn't work.
+// One of the solutions of such problems is to import image as a module, so I did it.
+
+
 import cat from './icons/cat.svg'
 import abyssinian from './icons/abyssinian-cat.svg'
 import sokoke from './icons/sokoke-cat.svg'

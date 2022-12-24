@@ -14,10 +14,6 @@ class App extends React.Component {
     this.setState({isManyAnimals : !this.state.isManyAnimals})
   }
 
-  randomDelay = () => {
-    return Math.random().toFixed(2) * 4 +0.5
-  }
-
   render() {
     return (
         <>
@@ -28,7 +24,7 @@ class App extends React.Component {
                 <Animal backgroundImage={cat} delay={1}
                         x={0}
                         y={0}/>:
-                <AnimalList onDelay={this.randomDelay}/>}
+                <AnimalList/>}
         </>
     );
   }

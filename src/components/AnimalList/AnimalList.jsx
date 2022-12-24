@@ -3,16 +3,13 @@ import Animal from "../Animal";
 import animalsArray from "../../media/animals";
 
 
-
-
-
 class AnimalList extends React.Component {
     state = {
         animalCount: Math.floor(Math.random() * animalsArray.length)
     }
 
     range = (size, startAt = 0) => {
-        return [...Array(size).keys()].map(i => i + startAt);
+        return [...Array(size).keys()];
     }
 
     takeRandom = () => {
@@ -24,13 +21,17 @@ class AnimalList extends React.Component {
         return Math.floor(Math.random() * size)
     }
 
+    randomDelay = () => {
+        return Math.random().toFixed(2) * 4 +0.5
+    }
+
     render(){
         return (
             <>
-                {this.range(this.state.animalCount).map((item, idx) =>
-                    <Animal key={idx}
+                {this.range(this.state.animalCount).map((item) =>
+                    <Animal key={item}
                             backgroundImage={this.takeRandom()}
-                            delay={this.props.onDelay()}
+                            delay={this.randomDelay()}
                             x={this.randomCoordinates(window.screen.width)}
                             y={this.randomCoordinates(window.screen.height)}/>
                 )}
